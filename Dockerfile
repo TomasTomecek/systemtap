@@ -7,7 +7,7 @@ LABEL com.redhat.component="$NAME" \
       version="$VERSION" \
       release="$RELEASE.$DISTTAG" \
       architecture="$ARCH" \
-      run="docker run --cap-add SYS_MODULE -v /sys/kernel/debug:/sys/kernel/debug -v /usr/src/kernels:/usr/src/kernels -v /usr/lib/modules/:/usr/lib/modules/ -v /usr/lib/debug:/usr/lib/debug -t -i --name NAME IMAGE" \
+      run="docker run --security-opt label:disable --cap-add SYS_MODULE -v /sys/kernel/debug:/sys/kernel/debug -v /usr/src/kernels:/usr/src/kernels -v /usr/lib/modules/:/usr/lib/modules/ -v /usr/lib/debug:/usr/lib/debug -t -i --name NAME IMAGE" \
       summary="programmable system-wide instrumentation system"
 
 RUN dnf install -y systemtap-testsuite systemtap systemtap-client && \
